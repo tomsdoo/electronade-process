@@ -1,5 +1,6 @@
 import { describe, it } from "mocha";
 import { strict as assert } from "assert";
+import { mock } from "sinon";
 
 import { preloadObject } from "../src/";
 
@@ -19,6 +20,19 @@ describe("preloadObject", () => {
   });
 
   it("preloadObject.process.cwd calling", async () => {
-    // TODO: implementation
+    const mocked = mock(ipcRenderer);
+    const mockedValue = "mocked value";
+    mocked
+      .expects("invoke")
+      .once()
+      .withArgs("electronade-process:cwd")
+      .returns(Promise.resolve(mockedValue));
+
+    assert.equal(
+      await eval(preloadObject.process.cwd.toString())(),
+      mockedValue
+    );
+    mocked.verify();
+    mocked.restore();
   });
 });
