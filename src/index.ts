@@ -1,4 +1,5 @@
 import { cwd } from "process";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { ipcRenderer } = require("electron");
 
 export const handles = [
@@ -10,6 +11,6 @@ export const handles = [
 
 export const preloadObject = {
   process: {
-    cwd: () => ipcRenderer.invoke("electronade-process:cwd"),
+    cwd: async () => await ipcRenderer.invoke("electronade-process:cwd"),
   },
 };

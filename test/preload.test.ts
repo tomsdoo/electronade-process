@@ -7,7 +7,7 @@ import { preloadObject } from "../src/";
 const ipcRenderer: {
   invoke: (eventName: string, ...args: any[]) => Promise<any>;
 } = {
-  invoke: (eventName: string) => Promise.resolve("value"),
+  invoke: async (eventName: string) => await Promise.resolve("value"),
 };
 
 describe("preloadObject", () => {
@@ -29,6 +29,7 @@ describe("preloadObject", () => {
       .returns(Promise.resolve(mockedValue));
 
     assert.equal(
+      // eslint-disable-next-line no-eval
       await eval(preloadObject.process.cwd.toString())(),
       mockedValue
     );
