@@ -7,7 +7,8 @@
   "types": "dist/esm/index.d.ts",
   "scripts": {
     "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json",
-    "format": "npm run format:src && npm run format:test",
+    "format": "npm run format:src && npm run format:test && npm run format:document",
+    "format:document": "prettier --write docs/**/*.html",
     "format:src": "prettier --write src/**/*.ts",
     "format:test": "prettier --write test/**/*.ts",
     "lint:src": "eslint src/**/*.ts",
@@ -16,6 +17,9 @@
     "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha -r ts-node/register \"test/**/*.ts\" --timeout 30000"
   },
   "lint-staged": {
+    "docs/**/*.html": [
+      "npm run format:document"
+    ],
     "src/**/*.ts": [
       "npm run lint:src",
       "npm run format:src"
