@@ -7,7 +7,7 @@ import { preloadObject } from "../src/";
 const ipcRenderer: {
   invoke: (eventName: string, ...args: any[]) => Promise<any>;
 } = {
-  invoke: (eventName: string) => Promise.resolve("value")
+  invoke: (eventName: string) => Promise.resolve("value"),
 };
 
 describe("preloadObject", () => {

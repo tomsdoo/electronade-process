@@ -7,20 +7,17 @@ import { cwd } from "process";
 describe("handles", () => {
   it("electronade-process:cwd eventName exists", () => {
     assert(
-      handles.find(
-        ({ eventName }) =>
-          eventName === "electronade-process:cwd"
-      )
+      handles.find(({ eventName }) => eventName === "electronade-process:cwd")
     );
   });
 
   it("electronade-process:cwd handler", () => {
     assert.equal(
-      (handles.find(
-        ({ eventName }) =>
-          eventName === "electronade-process:cwd"
-      ) as { handler: Function })
-        .handler(),
+      (
+        handles.find(
+          ({ eventName }) => eventName === "electronade-process:cwd"
+        ) as { handler: Function }
+      ).handler(),
       cwd()
     );
   });
