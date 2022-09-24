@@ -4,12 +4,12 @@ const { ipcRenderer } = require("electron");
 export const handles = [
   {
     eventName: "electronade-process:cwd",
-    handler: () => cwd()
-  }
+    handler: () => cwd(),
+  },
 ];
 
 export const preloadObject = {
   process: {
-    cwd: () => ipcRenderer.invoke("electronade-process:cwd")
-  }
+    cwd: () => ipcRenderer.invoke("electronade-process:cwd"),
+  },
 };
