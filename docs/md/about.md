@@ -9,6 +9,8 @@ See [electronade page](https://electronade.netlify.app/) for the structures of `
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/electronade-process)
 ![Maintenance](https://img.shields.io/maintenance/yes/2022)
 
+[![](https://nodei.co/npm/electronade-process.svg?mini=true)](https://www.npmjs.com/package/electronade-process)
+
 ## install
 
 ``` shell
